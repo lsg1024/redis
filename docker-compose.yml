@@ -1,0 +1,73 @@
+version: '3'
+services:
+  redis-master-1:
+    container_name: redis-master-1
+    image: redis:7.0.0
+    command: redis-server /etc/redis.conf
+    volumes:
+      - ./config/redis-master-1.conf:/etc/redis.conf
+    restart: always
+    depends_on:
+      - redis-master-2
+      - redis-master-3
+      - redis-slave-1
+      - redis-slave-2
+      - redis-slave-3
+    ports:
+      - "9001:9001"
+      - "19001:19001"
+
+  redis-master-2:
+    container_name: redis-master-2
+    image: redis:7.0.0
+    command: redis-server /etc/redis.conf
+    volumes:
+      - ./config/redis-master-2.conf:/etc/redis.conf
+    restart: always
+    ports:
+      - "9002:9002"
+      - "19002:19002"
+
+  redis-master-3:
+    container_name: redis-master-3
+    image: redis:7.0.0
+    command: redis-server /etc/redis.conf
+    volumes:
+      - ./config/redis-master-3.conf:/etc/redis.conf
+    restart: always
+    ports:
+      - "9003:9003"
+      - "19003:19003"
+
+  redis-slave-1:
+    container_name: redis-slave-1
+    image: redis:7.0.0
+    command: redis-server /etc/redis.conf
+    volumes:
+      - ./config/redis-slave-1.conf:/etc/redis.conf
+    restart: always
+    ports:
+      - "9004:9004"
+      - "19004:19004"
+
+  redis-slave-2:
+    container_name: redis-slave-2
+    image: redis:7.0.0
+    command: redis-server /etc/redis.conf
+    volumes:
+      - ./config/redis-slave-2.conf:/etc/redis.conf
+    restart: always
+    ports:
+      - "9005:9005"
+      - "19005:19005"
+
+  redis-slave-3:
+    container_name: redis-slave-3
+    image: redis:7.0.0
+    command: redis-server /etc/redis.conf
+    volumes:
+      - ./config/redis-slave-3.conf:/etc/redis.conf
+    restart: always
+    ports:
+      - "9006:9006"
+      - "19006:19006"
