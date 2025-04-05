@@ -1,7 +1,7 @@
 ### 클러스터 마스터 수동 생성
 ##### --cluster-replicas 0 -> 수동으로 slave 추가 (1의 경우 슬레이브를 뒤에 추가하면 마스터 노드에 자동으로 슬레이브 추가)
 ```
-docker exec -it redis-master-1 redis-cli --cluster create redis-master-1 [ip 주소]:[포트번호] redis-master-2 [ip 주소]:[포트번호] redis-master-3 [ip 주소]:[포트번호] --cluster-replicas 0
+docker exec -it redis-master-1 redis-cli --cluster create [redis-master-1 ip 주소]:[포트번호] [redis-master-2 ip 주소]:[포트번호] [redis-master-3 ip 주소]:[포트번호] --cluster-replicas 0
 ```
 ### 클러스터 마스터에 슬레이브 추가 
 - 로컬 환경인 경우 127.0.0.1 or localhost or host.docker.internal 삽입
